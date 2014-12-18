@@ -7,6 +7,15 @@ RUN apt-get update && \
 
 RUN gpg --keyserver pgp.mit.edu --recv-keys A4A9406876FCBD3C456770C88C718D3B5072E1F5
 
+RUN locale-gen en_US.UTF-8 &&\
+    update-locale
+
+ENV LANG en_US.UTF-8
+
+ENV LANGUAGE en_US:en
+
+ENV LC_ALL en_US.UTF-8
+
 RUN curl -SL "http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.73-linux-x86_64-glibc23.tar.gz" -o mysql.tar.gz && \
     curl -SL "http://mysql.he.net/Downloads/MySQL-5.1/mysql-5.1.73-linux-x86_64-glibc23.tar.gz.asc" -o mysql.tar.gz.asc && \
     gpg --verify mysql.tar.gz.asc && \
